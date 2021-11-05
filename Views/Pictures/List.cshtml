@@ -1,0 +1,29 @@
+﻿@using PhotoCard.Data.Models
+@model IEnumerable<Pictures>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <h2>All Pictures</h2>
+    @{
+        foreach (var pictures in Model)
+        {
+            <div>
+                <h2> Moedel: @pictures.name</h2>
+                <p>Price: @pictures.price.ToString("c")</p>
+            </div>
+
+        }
+
+    }
+</body>
+</html>

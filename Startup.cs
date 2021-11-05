@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PhotoCard.Data.Interfaces;
+using PhotoCard.Data.mocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,7 @@ namespace PhotoCard
         {
             //services.AddRazorPages();
             services.AddMvc();
+            services.AddTransient<IAllPictures, MockPictures>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,9 +36,9 @@ namespace PhotoCard
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
 
-           /* if (env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseStatusCodePages();
@@ -61,7 +64,8 @@ namespace PhotoCard
             {
                 endpoints.MapRazorPages();
             });
-           */
+           
         }
     }
 }
+
